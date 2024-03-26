@@ -1,5 +1,5 @@
 This is a game created in Unity for CIS376 with Professor Ira Woodring
-Groupmates: Gabe Kucinich, Trevor Martin, __
+Groupmates: Gabe Kucinich, Trevor Martin, Jayson Willey
 
 The game is currently in concept stages where we are between 2 ideas:
 
