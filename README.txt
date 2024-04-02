@@ -19,5 +19,5 @@ Description:
 
 Asset Links:
 	Monkey: https://assetstore.unity.com/packages/3d/characters/mr-mo-character-57859
-	Dart: Blender made (NOT Done)
-	Balloon: Blender made (Done)
+	Dart: Blender made (Done, with material)
+	Balloon: Blender made (Done, no material)
