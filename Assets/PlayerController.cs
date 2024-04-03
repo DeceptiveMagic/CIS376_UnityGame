@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
 
         
         if (Input.GetKey("space")){
-            if (timeSinceLastFire >= 0.35){
-                GameObject pb = Instantiate(Resources.Load("Dart") as GameObject);
+            if (timeSinceLastFire >= 0.5){
+                GameObject pb = Instantiate(Resources.Load("dart") as GameObject);
                 pb.transform.position = gameObject.transform.position;//match the palyer position
                 pb.transform.rotation = gameObject.transform.rotation;//match the player rotation
                 pb.transform.position += gameObject.transform.forward;//spawn 1 unit in front of the player
