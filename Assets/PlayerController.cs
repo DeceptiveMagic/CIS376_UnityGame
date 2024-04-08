@@ -27,10 +27,10 @@ public class PlayerController : MonoBehaviour
             multiplier = 2.0f;
         }
         if (Input.GetKey("w")){
-            move = t.forward * multiplier * Time.deltaTime * 100.0f;
+            move = t.forward * multiplier * Time.fixedDeltaTime * 100.0f;
         }
         if (Input.GetKey("s")){
-            move = -t.forward * multiplier * Time.deltaTime * 100.0f;
+            move = -t.forward * multiplier * Time.fixedDeltaTime * 100.0f;
         }
         if (Input.GetKey("a")){
             t.Rotate(-transform.up);
@@ -49,10 +49,11 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKey("space")){
             if (timeSinceLastFire >= 0.5){
-                GameObject pb = Instantiate(Resources.Load("dart") as GameObject);
+                GameObject pb = Instantiate(Resources.Load("Dart") as GameObject);
                 pb.transform.position = gameObject.transform.position;//match the palyer position
                 pb.transform.rotation = gameObject.transform.rotation;//match the player rotation
                 pb.transform.position += gameObject.transform.forward;//spawn 1 unit in front of the player
+                pb.transform.position += gameObject.transform.up * 5;
                 timeSinceLastFire = 0;
             }
         }
