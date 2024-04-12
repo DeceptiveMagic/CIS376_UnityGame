@@ -23,7 +23,7 @@ Balloon Behaviour:
 	Green - 3 hp, 3 speed. Standard movement.
 	Yellow - 4 hp, 4 speed. Standard movement.
 	Pink - 5 hp, 5 speed. Standard movement.
-	Purple - 3 hp, 3 speed. AI fleeing movement.
+	Purple - 1 hp, 3 speed. AI fleeing movement.
 
 TODO:
 	Implement balloon hit registration and health state changing.
