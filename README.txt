@@ -29,6 +29,7 @@ TODO:
 	Implement balloon hit registration and health state changing.
 	Update lives and money counter according to balloon passing and popping respectively
 	Create purple balloon AI to run from the player.
+	Create balloon spawner and rounds
 	(Optional) Upgrades:
 		Attack speed
 		Popping power
