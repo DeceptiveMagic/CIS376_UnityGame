@@ -17,6 +17,23 @@ Description:
 	reach the end of the stage. The player loses if a balloon 
 	reaches the end of the stage before the player can pop it.
 
+Balloon Behaviour:
+	Red - 1 hp, 1 speed. Standard movement.
+	Blue - 2 hp, 2 speed. Standard movement.
+	Green - 3 hp, 3 speed. Standard movement.
+	Yellow - 4 hp, 4 speed. Standard movement.
+	Pink - 5 hp, 5 speed. Standard movement.
+	Purple - 3 hp, 3 speed. AI fleeing movement.
+
+TODO:
+	Implement balloon hit registration and health state changing.
+	Update lives and money counter according to balloon passing and popping respectively
+	Create purple balloon AI to run from the player.
+	(Optional) Upgrades:
+		Attack speed
+		Popping power
+		Projectile speed + range
+
 Asset Links:
 	Monkey: https://assetstore.unity.com/packages/3d/characters/mr-mo-character-57859
 	Dart: Blender made (Done, with material)
