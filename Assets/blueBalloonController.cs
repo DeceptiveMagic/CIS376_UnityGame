@@ -7,13 +7,16 @@ public class blueBalloonController : MonoBehaviour
     public Transform[] points;
     int current;
 
-//TODO change speed to not be public and set it to 12.5 before final, it is public for testing reasons
+    //TODO change speed to not be public and set it to 12.5 before final, it is public for testing reasons
     public float speed;
     int hp = 2;
+    Material red;
     
     // Start is called before the first frame update
     void Start()
     {
+        red = Resources.Load("Red", typeof(Material)) as Material;
+
         current = 0;
     }
 
@@ -33,7 +36,7 @@ public class blueBalloonController : MonoBehaviour
         }
     }
 
-//TODO: FIX ALL BALLOONS DYING IN ONE HIT, REGARDLESS OF hp
+
     void OnCollisionEnter(Collision collision){
         Debug.Log("Collided with " + collision.gameObject.name);
         if(collision.gameObject.name == "Dart(Clone)"){
@@ -44,6 +47,7 @@ public class blueBalloonController : MonoBehaviour
             }
             if (hp == 1){
                 //load red colour
+                gameObject.GetComponent<Renderer>().material = red;
                 speed = 10.0f;
             }
         }

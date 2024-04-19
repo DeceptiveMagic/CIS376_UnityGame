@@ -20,7 +20,7 @@ public class redBalloonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position != points[current].position){
+        if (current < 15 && transform.position != points[current].position){
             transform.position = Vector3.MoveTowards(transform.position, points[current].position, speed * Time.deltaTime);
         }
         else{

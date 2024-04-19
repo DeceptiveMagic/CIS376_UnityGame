@@ -1744,6 +1744,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1985156900}
   m_SourcePrefab: {fileID: 100100000, guid: 93f04cad4f1239a42a1c0b64a6fec50e, type: 3}
+--- !u!1 &1330969109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330969110}
+  m_Layer: 0
+  m_Name: LiveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330969110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330969109}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.912514, y: 7.517811, z: 50.132328}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1381987618
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,7 +2789,8 @@ PrefabInstance:
       propertyPath: points.Array.data[14]
       value: 
       objectReference: {fileID: 1791066387}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6567526999838184083, guid: af5e50eb0ad9bfb44a9ea367137324e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2800,3 +2832,4 @@ SceneRoots:
   - {fileID: 1490510708}
   - {fileID: 1101776071}
   - {fileID: 1791066387}
+  - {fileID: 1330969110}

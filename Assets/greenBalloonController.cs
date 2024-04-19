@@ -10,10 +10,13 @@ public class greenBalloonController : MonoBehaviour
 //TODO change speed to not be public and set it to 15 before final, it is public for testing reasons
     public float speed;
     int hp = 3;
-    
+    Material red;
+    Material blue;
     // Start is called before the first frame update
     void Start()
     {
+        red = Resources.Load("Red", typeof(Material)) as Material;
+        blue = Resources.Load("Blue", typeof(Material)) as Material;
         current = 0;
     }
 
@@ -44,10 +47,12 @@ public class greenBalloonController : MonoBehaviour
             }
             if (hp == 1){
                 //load red colour
+                gameObject.GetComponent<Renderer>().material = red;
                 speed = 10.0f;
             }
             if (hp == 2){
                 //load blue colour
+                gameObject.GetComponent<Renderer>().material = blue;
                 speed = 12.5f;
             }
         }
