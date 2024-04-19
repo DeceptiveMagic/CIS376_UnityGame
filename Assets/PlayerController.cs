@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
                 pb.transform.position = gameObject.transform.position;//match the palyer position
                 pb.transform.rotation = gameObject.transform.rotation;//match the player rotation
                 pb.transform.position += gameObject.transform.forward;//spawn 1 unit in front of the player
-                pb.transform.position += gameObject.transform.up * 5;
+                pb.transform.position += gameObject.transform.up * 5;//spawn 5 units above the floor
                 timeSinceLastFire = 0;
             }
         }

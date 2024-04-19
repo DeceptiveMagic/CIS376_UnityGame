@@ -18,4 +18,20 @@ public class dartController : MonoBehaviour
     {
         
     }
+
+    void OnCollisionEnter(Collision collision){
+        Debug.Log("Collided with " + collision.gameObject.name);
+        //https://forum.unity.com/threads/finding-object-by-name-if-part-of-a-name-string-something.413795/
+        //TODO: Delete the dart if it collides with any balloon object
+        //There is not String.contains() or String.startsWith() functions implemented
+        //The link listed above mentions something about tags, but I couldn't implement them myself
+        //As of now, only the balloons named with their colours are able to destroy the dart
+        if(collision.gameObject.name == "red" || collision.gameObject.name == "blue" ||
+         collision.gameObject.name == "green" || collision.gameObject.name == "yellow" ||
+          collision.gameObject.name == "pink" || collision.gameObject.name == "purple"){
+            //destroy the dart if it hits a balloon
+            Destroy(gameObject);
+        }
+    }
+    
 }

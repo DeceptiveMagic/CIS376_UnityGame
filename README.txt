@@ -26,12 +26,11 @@ Balloon Behaviour:
 	Purple - 1 hp, 3 speed. AI fleeing movement.
 
 TODO:
-	Implement balloon hit registration and health state changing
 	Update lives according to a balloon passing the last waypoint
 	Update money according to a balloon being popped
 	Update rounds text according to round number
-	Create purple balloon AI to run from the player
-	Create balloon spawner and rounds
+	Create purple balloon controller with AI to run from the player
+	Create balloon spawner and rounds (may require premade list of points)
 	(Optional) Upgrades:
 		Attack speed
 		Popping power

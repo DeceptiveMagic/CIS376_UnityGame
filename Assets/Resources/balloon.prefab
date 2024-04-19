@@ -50,10 +50,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cf190b4a3f55e504d90cf93b13c56bd4, type: 3}
       propertyPath: m_Name
-      value: balloon 1
+      value: Balloon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cf190b4a3f55e504d90cf93b13c56bd4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6567526999838184083}
   m_SourcePrefab: {fileID: 100100000, guid: cf190b4a3f55e504d90cf93b13c56bd4, type: 3}
+--- !u!1 &3529142794047211365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cf190b4a3f55e504d90cf93b13c56bd4, type: 3}
+  m_PrefabInstance: {fileID: 4340169858300607028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6567526999838184083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529142794047211365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f51c08cfeaa7d64ca0971d64ed5b59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 10
