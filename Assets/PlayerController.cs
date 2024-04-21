@@ -1,54 +1,118 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    Transform t;
-    Rigidbody rb;
+    CharacterController controller;
+    Transform transform;
+    Vector3 cameraRotation;
     float timeSinceLastFire;
+    float forwardSpeed;
+    float lateralSpeed;
+    bool noForward;
+    bool noBackward;
+    bool noLeft;
+    bool noRight;
+    const float MOVEMENT_SPEED_INCREMENT = 120f;
+    const float MOVEMENT_SPEED_CAP = 2000f;
+    // Start is called before the first frame update
     void Start()
     {
-        t = gameObject.transform;
-        rb = gameObject.GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        transform = gameObject.transform;
+        controller = gameObject.GetComponent<CharacterController>();
+        timeSinceLastFire = 1;
     }
 
     // Update is called once per frame
-    void FixedUpdate()//always use FixedUpdate if you have any kind of physics application
+    void Update()
     {
-        timeSinceLastFire += Time.fixedDeltaTime;
-        float velocity = rb.velocity.magnitude;
-        Vector3 move = new Vector3(0,0,0);
-        
-        float multiplier = 1.0f;
-        if (Input.GetKey("left shift")){
-            multiplier = 2.0f;
+        timeSinceLastFire += Time.deltaTime;
+        // If left shift, then 2.0, else 1.0.
+        float multiplier = Input.GetKey("left shift") ? 1.2f : 1.0f;
+
+        // First, apply movementransform.
+        if (Input.GetKey("w"))
+        {
+            forwardSpeed += MOVEMENT_SPEED_INCREMENT * multiplier * Time.deltaTime;
         }
-        if (Input.GetKey("w")){
-            move = t.forward * multiplier * Time.fixedDeltaTime * 100.0f;
+        else
+        {
+            noForward = true;
         }
-        if (Input.GetKey("s")){
-            move = -t.forward * multiplier * Time.fixedDeltaTime * 100.0f;
+        if (Input.GetKey("s"))
+        {
+            forwardSpeed -= MOVEMENT_SPEED_INCREMENT * multiplier * Time.deltaTime;
         }
-        if (Input.GetKey("a")){
-            t.Rotate(-transform.up);
+        else
+        {
+            noBackward = true;
         }
-        if (Input.GetKey("d")){
-            t.Rotate(transform.up);
+        // Could be the wrong direction, we'll see.
+        if (Input.GetKey("a"))
+        {
+            lateralSpeed -= MOVEMENT_SPEED_INCREMENT * multiplier * Time.deltaTime;
         }
-        
-        if (velocity < 10.0f){
-            Debug.Log(move);
-            rb.AddForce(move, ForceMode.Impulse);
+        else
+        {
+            noLeft = true;
+        }
+        if (Input.GetKey("d"))
+        {
+            lateralSpeed += MOVEMENT_SPEED_INCREMENT * multiplier * Time.deltaTime;
+        }
+        else
+        {
+            noRight = true;
         }
 
+        // Next, apply decay to give the sense of physics without the baggage.
+        multiplier = 0.5f;
+        if (noForward && noBackward)
+        {
+            if (forwardSpeed > 0)
+            {
+                forwardSpeed -= MOVEMENT_SPEED_INCREMENT * multiplier * Time.deltaTime;
+                Mathf.Clamp(forwardSpeed, 0, MOVEMENT_SPEED_CAP);
+            }
+            else if (forwardSpeed < 0)
+            {
+                forwardSpeed += MOVEMENT_SPEED_INCREMENT * multiplier * Time.deltaTime;
+                Mathf.Clamp(forwardSpeed, -MOVEMENT_SPEED_CAP, 0);
+            }
+        }
 
+        if (noLeft && noRight)
+        {
+            if (lateralSpeed > 0)
+            {
+                lateralSpeed -= MOVEMENT_SPEED_INCREMENT * multiplier * Time.deltaTime;
+                Mathf.Clamp(lateralSpeed, 0, MOVEMENT_SPEED_CAP);
+            }
+            else if (lateralSpeed < 0)
+            {
+                lateralSpeed += MOVEMENT_SPEED_INCREMENT * multiplier * Time.deltaTime;
+                Mathf.Clamp(lateralSpeed, -MOVEMENT_SPEED_CAP, 0);
+            }
+        }
 
-        
-        if (Input.GetKey("space")){
-            if (timeSinceLastFire >= 0.5){
+        // Restrict maximum values;
+        Mathf.Clamp(forwardSpeed, -MOVEMENT_SPEED_CAP, MOVEMENT_SPEED_CAP);
+        Mathf.Clamp(lateralSpeed, -MOVEMENT_SPEED_CAP, MOVEMENT_SPEED_CAP);
+
+        // Apply to transform instead of as physics.
+        Vector3 translation = new Vector3(-forwardSpeed, 0, lateralSpeed);
+        controller.SimpleMove(translation);
+
+        // Camera Movement:
+        transform.eulerAngles += new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (timeSinceLastFire >= 1f)
+            {
                 GameObject pb = Instantiate(Resources.Load("Dart") as GameObject);
                 pb.transform.position = gameObject.transform.position;//match the palyer position
                 pb.transform.rotation = gameObject.transform.rotation;//match the player rotation
@@ -57,5 +121,10 @@ public class PlayerController : MonoBehaviour
                 timeSinceLastFire = 0;
             }
         }
+    }
+
+    void FixedUpdate()
+    {
+
     }
 }
