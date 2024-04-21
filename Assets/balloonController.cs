@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class balloonController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class balloonController : MonoBehaviour
     Material yellow;
     Material purple;
     Material pink;
+    // textManager textManager1;
 
     void Start()
     {
@@ -33,6 +35,8 @@ public class balloonController : MonoBehaviour
         yellow = Resources.Load("Yellow", typeof(Material)) as Material;
         purple = Resources.Load("Purple", typeof(Material)) as Material;
         pink = Resources.Load("Pink", typeof(Material)) as Material;
+
+        // textManager1 = GameObject.Find("textManager").GetComponent<textManager>();
 
         switch(currentColor){
             case BalloonColor.Pink:
@@ -68,7 +72,7 @@ public class balloonController : MonoBehaviour
             current = (current + 1);
             if (current >= 15){
                 //TODO decrement the lives counter by the amount of the remaining hp on the balloon
-                //sk.decreaseLives(hp);
+                textManager.decreaseLives(hp);
                 Destroy(gameObject);
             }
         }
@@ -108,7 +112,7 @@ public class balloonController : MonoBehaviour
                     Destroy(gameObject);
                     break;
             }
-            //sk.increaseScore(1);
+            textManager.increaseMoney(1);
         }
     }
 }
