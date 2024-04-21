@@ -102,12 +102,12 @@ public class PlayerController : MonoBehaviour
         Mathf.Clamp(forwardSpeed, -MOVEMENT_SPEED_CAP, MOVEMENT_SPEED_CAP);
         Mathf.Clamp(lateralSpeed, -MOVEMENT_SPEED_CAP, MOVEMENT_SPEED_CAP);
 
-        // Apply to transform instead of as physics.
-        Vector3 translation = new Vector3(-forwardSpeed, 0, lateralSpeed);
-        controller.SimpleMove(translation);
-
         // Camera Movement:
         transform.eulerAngles += new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+
+        // Apply to transform instead of as physics.
+        Vector3 translation = new Vector3(lateralSpeed, 0, forwardSpeed);
+        controller.SimpleMove(transform.TransformDirection(translation));
 
         if (Input.GetMouseButtonDown(0))
         {
