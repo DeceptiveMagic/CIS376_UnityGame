@@ -45,7 +45,7 @@ public class BalloonSpawnerLogic : MonoBehaviour
         // Increment the timer.
         timer += Time.deltaTime;
         // If we've reached the increment and there are balloons left to spawn, spawn them.
-        if (timer >= timeIncrement && balloonsLeftInRound > 0) {
+        if (timer >= timeIncrement && balloonsLeftInRound > 0 && !textManager.getGameWon()) {
             timer = 0;
             balloonsLeftInRound--;
             GameObject balloon = Instantiate(Resources.Load(balloonTypes[(int)Random.Range(0, numBalloonTypes)]) as GameObject);

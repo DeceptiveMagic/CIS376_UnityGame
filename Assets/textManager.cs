@@ -73,6 +73,10 @@ public class textManager : MonoBehaviour
         gameWon = isGameWon;
     }
 
+    public static bool getGameWon(){
+        return gameWon;
+    }
+
     public static void resetGame() {
         currentCost = 5;
         lives = 10;
@@ -90,8 +94,6 @@ public class textManager : MonoBehaviour
         nextUpgradeLabel.SetText("Upgrade with RMB: $" + currentCost.ToString());
 
         if (gameWon) {
-            round = 6;
-            lives = 0;
             notPlayingLabel.SetText("You won! Press T to try again.");
         }
         else if (lives <= 0)

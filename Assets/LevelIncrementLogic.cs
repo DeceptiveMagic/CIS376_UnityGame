@@ -7,6 +7,7 @@ using UnityEngine;
 public class LevelIncrementLogic : MonoBehaviour
 {
     const int NUM_LEVELS = 6;
+    // int[] numBalloonsPerLevel = {10, 20, 25, 30, 50, 100};
     int[] numBalloonsPerLevel = {10, 20, 25, 30, 50, 100};
     float[] resetTimePerLevel = {1f, 1f, 0.5f, 0.5f, 0.5f, 0.3f};
     string[][] balloonTypesPerLevel = {
@@ -34,15 +35,16 @@ public class LevelIncrementLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (NUM_LEVELS < currentLevel) {
-            textManager.setGameWon(true);
-        }
-        else if (spawner.IsRoundOver() && textManager.livesRemaining() > 0) {
+        if (spawner.IsRoundOver() && textManager.livesRemaining() > 0) {
+            if (currentLevel >= NUM_LEVELS) {
+                textManager.setGameWon(true);
+                return;
+            }
             spawner.numBalloonTypes = balloonTypesPerLevel[currentLevel].Length;
             spawner.balloonTypes = balloonTypesPerLevel[currentLevel];
             spawner.timeIncrement = resetTimePerLevel[currentLevel];
             spawner.balloonsLeftInRound = numBalloonsPerLevel[currentLevel];
-            ++currentLevel;
+            currentLevel++;
             textManager.increaseRound(1);
         }
     }
