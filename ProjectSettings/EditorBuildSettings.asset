@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/BalloonGame.unity
+    guid: eb70e86412e00a34e89315a0a751c837
   m_configObjects: {}
