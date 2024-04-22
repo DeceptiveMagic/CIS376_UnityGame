@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     bool noLeft;
     bool noRight;
     const float MOVEMENT_SPEED_INCREMENT = 120f;
-    const float MOVEMENT_SPEED_CAP = 2000f;
+    const float MOVEMENT_SPEED_CAP = 50f;
     // Start is called before the first frame update
     void Start()
     {
@@ -111,8 +111,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // Restrict maximum values;
-        Mathf.Clamp(forwardSpeed, -MOVEMENT_SPEED_CAP, MOVEMENT_SPEED_CAP);
-        Mathf.Clamp(lateralSpeed, -MOVEMENT_SPEED_CAP, MOVEMENT_SPEED_CAP);
+        forwardSpeed = Mathf.Clamp(forwardSpeed, -MOVEMENT_SPEED_CAP, MOVEMENT_SPEED_CAP);
+        lateralSpeed = Mathf.Clamp(lateralSpeed, -MOVEMENT_SPEED_CAP, MOVEMENT_SPEED_CAP);
 
         // Camera Movement:
         playerTransform.eulerAngles += new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
