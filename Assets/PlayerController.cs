@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Transform playerTransform;
     Vector3 cameraRotation;
     LevelIncrementLogic levelManager;
+    List<GameObject> aiMonkeys = new List<GameObject>();
     int numDartCollisions = 1;
     int numUpgradesBought;
     float delayToFire;
@@ -37,11 +39,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Input.GetKey("t")) {
+            Debug.Log(aiMonkeys);
             numDartCollisions = 1;
             timeSinceLastFire = 1;
             delayToFire = 1.5f;
             textManager.resetGame();
             levelManager.resetGame();
+            foreach (GameObject monkey in aiMonkeys) {
+                Destroy(monkey);
+            }
+            numUpgradesBought = 0;
         }
         timeSinceLastFire += Time.deltaTime;
         // If left shift, then 2.0, else 1.0.
@@ -146,14 +153,17 @@ public class PlayerController : MonoBehaviour
                 if (numUpgradesBought == 2) {
                     GameObject aiMonkey1 = Instantiate(Resources.Load("AIMonkey") as GameObject);
                     aiMonkey1.transform.position = new Vector3(34, 0, 64);
+                    aiMonkeys.Add(aiMonkey1);
                 }
                 if (numUpgradesBought == 4) {
                     GameObject aiMonkey2 = Instantiate(Resources.Load("AIMonkey") as GameObject);
                     aiMonkey2.transform.position = new Vector3(70, 0, 74);
+                    aiMonkeys.Add(aiMonkey2);
                 }
                 if (numUpgradesBought == 6) {
                     GameObject aiMonkey3 = Instantiate(Resources.Load("AIMonkey") as GameObject);
                     aiMonkey3.transform.position = new Vector3(78, 0, 49);
+                    aiMonkeys.Add(aiMonkey3);
                 }
                 ++numDartCollisions;
             }
