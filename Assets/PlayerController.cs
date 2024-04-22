@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Vector3 cameraRotation;
     LevelIncrementLogic levelManager;
     int numDartCollisions = 1;
+    int numUpgradesBought;
     float delayToFire;
     float timeSinceLastFire;
     float forwardSpeed;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         levelManager = GameObject.Find("MetaLogicManager").GetComponent<LevelIncrementLogic>();
         timeSinceLastFire = 1;
         delayToFire = 1.5f;
+        numUpgradesBought = 0;
     }
 
     // Update is called once per frame
@@ -140,6 +142,11 @@ public class PlayerController : MonoBehaviour
             if (textManager.getMoney() >= textManager.getCurrentCost()) {
                 textManager.buyUpgrade();
                 delayToFire /= 1.25f;
+                ++numUpgradesBought;
+                if (numUpgradesBought == 4) {
+                    GameObject aiMonkey = Instantiate(Resources.Load("AIMonkey") as GameObject);
+                    aiMonkey.transform.position = new Vector3(78, 0, 49);
+                }
                 ++numDartCollisions;
             }
         }
