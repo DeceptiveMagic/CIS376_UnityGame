@@ -8,6 +8,7 @@ public class MonkeyAIScript : MonoBehaviour
 {
     SphereCollider sphereCollider;
     Transform monkeyTransform;
+    Animator anim;
     float timer;
     const float THROW_DELAY = 1f;
 
@@ -15,6 +16,7 @@ public class MonkeyAIScript : MonoBehaviour
     void Start()
     {
         sphereCollider = gameObject.GetComponent<SphereCollider>();
+        anim = gameObject.GetComponent<Animator>();
         monkeyTransform = gameObject.transform;
         timer = 0;
     }
@@ -48,6 +50,7 @@ public class MonkeyAIScript : MonoBehaviour
         {
             if (otherGameObject.name.Contains("Balloon"))
             {
+                anim.Play("Throw");
                 timer = 0;
                 UnityEngine.Vector3 vectorToBalloon = otherGameObject.transform.position - monkeyTransform.position;
                 UnityEngine.Vector3 rotationVector = UnityEngine.Vector3.RotateTowards(monkeyTransform.forward, vectorToBalloon, (float)Math.PI * 2, 10000);
