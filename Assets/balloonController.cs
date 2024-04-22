@@ -55,6 +55,10 @@ public class balloonController : MonoBehaviour
                 hp = 2;
                 speed = 12.5f;
                 break;
+            case BalloonColor.Purple:
+                hp = 1;
+                speed = 25f;
+                break;
             default:
                 hp = 1;
                 speed = 10.0f;
@@ -83,6 +87,7 @@ public class balloonController : MonoBehaviour
     void OnCollisionEnter(Collision collision){
         Debug.Log("Collided with " + collision.gameObject.name);
         if(collision.gameObject.name == "Dart(Clone)"){
+            textManager.increaseMoney(hp);
             switch(currentColor){
                 case BalloonColor.Pink:
                     gameObject.GetComponent<Renderer>().material = yellow;
@@ -112,7 +117,6 @@ public class balloonController : MonoBehaviour
                     Destroy(gameObject);
                     break;
             }
-            textManager.increaseMoney(1);
         }
     }
 }

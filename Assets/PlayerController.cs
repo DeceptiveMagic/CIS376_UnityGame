@@ -143,9 +143,17 @@ public class PlayerController : MonoBehaviour
                 textManager.buyUpgrade();
                 delayToFire /= 1.25f;
                 ++numUpgradesBought;
+                if (numUpgradesBought == 2) {
+                    GameObject aiMonkey1 = Instantiate(Resources.Load("AIMonkey") as GameObject);
+                    aiMonkey1.transform.position = new Vector3(34, 0, 64);
+                }
                 if (numUpgradesBought == 4) {
-                    GameObject aiMonkey = Instantiate(Resources.Load("AIMonkey") as GameObject);
-                    aiMonkey.transform.position = new Vector3(78, 0, 49);
+                    GameObject aiMonkey2 = Instantiate(Resources.Load("AIMonkey") as GameObject);
+                    aiMonkey2.transform.position = new Vector3(70, 0, 74);
+                }
+                if (numUpgradesBought == 6) {
+                    GameObject aiMonkey3 = Instantiate(Resources.Load("AIMonkey") as GameObject);
+                    aiMonkey3.transform.position = new Vector3(78, 0, 49);
                 }
                 ++numDartCollisions;
             }

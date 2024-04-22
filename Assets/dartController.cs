@@ -29,9 +29,7 @@ public class dartController : MonoBehaviour
         //There is not String.contains() or String.startsWith() functions implemented
         //The link listed above mentions something about tags, but I couldn't implement them myself
         //As of now, only the balloons named with their colours are able to destroy the dart
-        if (collision.gameObject.name.Contains("RedBalloon") || collision.gameObject.name.Contains("BlueBalloon") ||
-         collision.gameObject.name.Contains("GreenBalloon") || collision.gameObject.name.Contains("YellowBalloon") ||
-          collision.gameObject.name.Contains("PinkBalloon") || collision.gameObject.name.Contains("PurpleBalloon"))
+        if (collision.gameObject.name.Contains("Balloon"))
         {
             //destroy the dart if it hits a balloon
             if (--numCollisions <= 0)
